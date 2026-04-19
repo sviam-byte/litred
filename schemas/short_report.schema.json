@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "short_report",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "passport": {
+      "type": "object",
+      "description": "Corpus type, dominant mode, confidence"
+    },
+    "general_verdict": {
+      "$ref": "general_verdict.schema.json",
+      "description": "Editorial position, always early and near the top"
+    },
+    "top_findings": {
+      "type": "array",
+      "maxItems": 5,
+      "items": { "type": "string" },
+      "description": "3–5 most important problems"
+    },
+    "strengths": {
+      "type": "array",
+      "maxItems": 5,
+      "items": { "type": "string" },
+      "description": "3–5 strongest assets"
+    },
+    "ai_detection_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "suspicion_level": {
+          "type": "string",
+          "enum": ["low", "medium", "high"]
+        },
+        "confidence": {
+          "type": "number"
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "required": ["suspicion_level", "confidence", "note"]
+    },
+    "revision_order": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Ordered list of what to fix first"
+    }
+  },
+  "required": [
+    "passport",
+    "general_verdict",
+    "top_findings",
+    "strengths",
+    "ai_detection_summary",
+    "revision_order"
+  ]
+}

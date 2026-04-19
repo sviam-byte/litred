@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "module_output",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "module_name": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "findings": {
+      "type": "array",
+      "items": { "$ref": "finding.schema.json" }
+    },
+    "strengths": {
+      "type": "array",
+      "items": { "$ref": "strength_item.schema.json" }
+    },
+    "cautions": {
+      "type": "array",
+      "items": { "$ref": "caution_item.schema.json" }
+    },
+    "unresolved": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "handoff_notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "required": [
+    "module_name",
+    "summary",
+    "findings",
+    "strengths",
+    "cautions",
+    "unresolved",
+    "handoff_notes"
+  ]
+}
